@@ -4,20 +4,22 @@ import com.badlogic.gdx.math.Vector2;
 
 abstract class Piece {
     enum Side {
-        Black,
-        White
+        BLACK,
+        WHITE
     }
     enum Unit {
-        Pawn,
-        Knight,
-        Bishop,
-        Rook,
-        Queen,
-        King
+        PAWN,
+        KNIGHT,
+        BISHOP,
+        ROOK,
+        QUEEN,
+        KING
     }
 
     public Piece(Unit unit, Vector2 position, Side side) {
+        // constructor will place the unit respective to their own side
         this.unit = unit;
+        // TODO make method that is called to convert position from relative to absolute
         this.position = position;
         this.side = side;
     }
