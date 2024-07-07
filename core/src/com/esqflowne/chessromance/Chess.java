@@ -9,10 +9,12 @@ public class Chess extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture img;
 	Render renderer;
+	Board board;
 	
 	@Override
 	public void create () {
 		renderer = new Render();
+		board = Board.getBoardInstance();
 	}
 
 	@Override
@@ -22,7 +24,6 @@ public class Chess extends ApplicationAdapter {
 	
 	@Override
 	public void dispose () {
-		batch.dispose();
 		renderer.clean();
 	}
 }

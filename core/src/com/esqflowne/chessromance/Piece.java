@@ -17,9 +17,7 @@ abstract class Piece {
     }
 
     public Piece(Unit unit, Vector2 position, Side side) {
-        // constructor will place the unit respective to their own side
         this.unit = unit;
-        // TODO make method that is called to convert position from relative to absolute
         this.position = position;
         this.side = side;
     }

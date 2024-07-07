@@ -11,7 +11,7 @@ public class Render {
     private SpriteBatch batch;
 
     public Render() {
-        LoadGUI();
+        loadGUI();
     }
 
     public void renderGUI() {
@@ -29,13 +29,19 @@ public class Render {
         board.dispose();
     }
 
-    private void LoadGUI() {
+    private void loadGUI() {
         //LoadGUI
         //LoadBoard
         //LoadEntities
         batch = new SpriteBatch();
         banner = new Texture("tempGUI.png");
         board = new Texture("board.png");
+    }
+
+    private void drawPieces(Piece[] pieces) {
+        for (Piece piece : pieces) {
+            //batch.draw()
+        }
     }
 
 
