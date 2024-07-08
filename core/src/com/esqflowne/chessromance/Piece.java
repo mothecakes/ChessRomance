@@ -46,6 +46,9 @@ abstract class Piece {
     // responsible for detecting movable and takable tiles
     public abstract void detectTile();
 
+    public abstract void detectMoveable();
+    public abstract void detectTakeable();
+
     public boolean checkTile(Vector2 pos) {
         for (Piece piece: board.getAllPieces()) {
             if (piece.position.equals(pos)) return false;

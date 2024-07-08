@@ -13,6 +13,11 @@ public class Pawn extends Piece {
         detectTile();
         if (movableTiles.contains(target))
             position = target;
+        if (takeableTiles.contains(target)) {
+            position = target;
+            System.out.println("can take");
+        }
+        takeableTiles.clear();
         movableTiles.clear();
     }
 
@@ -22,9 +27,10 @@ public class Pawn extends Piece {
 
     public void detectTile() {
         detectMoveable();
+        detectTakeable();
     }
 
-    private void  detectMoveable() {
+    public void  detectMoveable() {
         if (this.side == Side.WHITE) {
             int targetY = MyMath.getRange((int) (position.y + 1), 0, 7);
             Vector2 coord = new Vector2(position.x, targetY);
@@ -43,24 +49,29 @@ public class Pawn extends Piece {
         }
     }
 
-    private void detectTakeable() {
+    public void detectTakeable() {
         if (this.side == Side.WHITE) {
             int targetY = (int)position.y + 1;
-            int targetX = (int)position.x + 1;
-            int targetX2 = (int)position.x - 1;
-            
-            if (MyMath.inRange(targetY,0,7) && (MyMath.inRange(targetX,0,7) ||
-                MyMath.inRange(targetX2,0,7)) ) {
-                    Vector2 coord = new Vector2(position.x, targetY);
+            int targetLeftX = (int)position.x - 1;
+            int targetRightX = (int)position.x + 1;
 
-                    if (checkTile(coord)) {
-                        movableTiles.add(coord);
+            if (MyMath.inRange(targetY,0,7) && (MyMath.inRange(targetLeftX,0,7) ||
+                MyMath.inRange(targetRightX,0,7)) ) {
+                Vector2 leftCheck = null;
+                Vector2 rightCheck = null;
+                if (targetLeftX > 0) {
+                    leftCheck = new Vector2(targetLeftX, targetY);
+                    if (!checkTile(leftCheck)) {
+                        takeableTiles.add(leftCheck);
                     }
-
+                }
+                if (targetRightX < 7) {
+                    rightCheck = new Vector2(targetRightX, targetY);
+                    if (!checkTile(rightCheck)) {
+                        takeableTiles.add(rightCheck);
+                    }
+                }
             }
-
-
         }
-
     }
 }
