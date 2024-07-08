@@ -45,12 +45,13 @@ public class MyInputProcessor implements InputProcessor {
     }
 
     @Override
-    public boolean touchUp(int i, int i1, int i2, int i3) {
+    public boolean touchUp(int x, int y, int i2, int i3) {
         // if drag flag on, and new tile,
         for (Piece piece : board.getAllPieces()) {
             if (piece.dragged) {
                 render.resetMousePosition();
                 piece.dragged = false;
+                piece.move(findTile(x, y));
             }
         }
         // // convert mouse position to board position

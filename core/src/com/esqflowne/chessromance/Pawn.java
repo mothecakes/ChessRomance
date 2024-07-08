@@ -10,7 +10,7 @@ public class Pawn extends Piece {
     }
 
     public void move(Vector2 target) {
-
+        position = target;
     }
 
     public void die() {
