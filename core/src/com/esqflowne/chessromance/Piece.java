@@ -26,6 +26,7 @@ abstract class Piece {
     public Vector2 position;
     public Side side;
     public boolean alive;
+    public boolean dragged;
 
     public abstract void move(Vector2 target);
 

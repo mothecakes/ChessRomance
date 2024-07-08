@@ -10,6 +10,7 @@ public class Board {
     private Texture boardTexture;
     private Piece[] whitePieces;
     private Piece[] blackPieces;
+    private Piece[] allPieces = null;
 
     private static Board boardInstance = null;
 
@@ -20,9 +21,22 @@ public class Board {
         return boardInstance;
     }
 
-    private Board() {
-        tiles = new Piece[width][height];
-        generateBoard();
+    public Piece[] getAllPieces() {
+        if (allPieces == null) {
+            int count = 0;
+            allPieces = new Piece[32];
+            if (whitePieces == null) generateWhite();
+            for (Piece white: whitePieces) {
+                allPieces[count] = white;
+                count++;
+            }
+            if (blackPieces == null) generateBlack();
+            for (Piece black: blackPieces) {
+                allPieces[count] = black;
+                count++;
+            }
+        }
+        return allPieces;
     }
 
     public void generateBoard() {
@@ -35,14 +49,20 @@ public class Board {
 
     }
 
+
+    private Board() {
+        tiles = new Piece[width][height];
+        generateBoard();
+    }
+
     private void generateBlack() {
         // generate pawns
         // offsets are determined based on white being on bottom
         final int offsetY = 6;
-        final int offsetX = 1;
+        final int offsetX = 0;
 
         int count = 0;
-        for (int j = 1; j <=2; j++) {
+        for (int j = 0; j < 2; j++) {
             for(int i = 0; i < width; i++)  {
                 blackPieces[count] = new Pawn(new Vector2(offsetX + i,offsetY + j), Piece.Side.BLACK);
                 count++;
@@ -56,11 +76,11 @@ public class Board {
     }
     private void generateWhite() {
         // generate pawns
-        final int offsetY = 1;
-        final int offsetX = 1;
+        final int offsetY = 0;
+        final int offsetX = 0;
 
         int count = 0;
-        for (int j = 1; j <=2; j++) {
+        for (int j = 0; j < 2; j++) {
             for(int i = 0; i < width; i++)  {
                 whitePieces[count] = new Pawn(new Vector2(offsetX + i,offsetY + j), Piece.Side.WHITE);
                 count++;
