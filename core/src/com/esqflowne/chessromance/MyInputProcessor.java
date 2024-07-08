@@ -49,9 +49,9 @@ public class MyInputProcessor implements InputProcessor {
         // if drag flag on, and new tile,
         for (Piece piece : board.getAllPieces()) {
             if (piece.dragged) {
+                piece.move(findTile(x, y));
                 render.resetMousePosition();
                 piece.dragged = false;
-                piece.move(findTile(x, y));
             }
         }
         // // convert mouse position to board position
@@ -87,6 +87,8 @@ public class MyInputProcessor implements InputProcessor {
 
     private Vector2 findTile(int x, int y) {
         final int tileSize = 600/8;
+        x = getRange(x, 0, 600-64);
+        y = getRange(y, 0, 600-64);
         if (x <= 600) {
             x = (x/tileSize);
             y = 7 - (y/tileSize);
@@ -107,5 +109,15 @@ public class MyInputProcessor implements InputProcessor {
             }
         }
         return null;
+    }
+
+    private int getRange(int input, int min, int max) {
+        if (input < min) {
+            return min;
+        }
+        if (input > max) {
+            return max;
+        }
+        return input;
     }
 }
