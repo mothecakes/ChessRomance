@@ -87,8 +87,8 @@ public class MyInputProcessor implements InputProcessor {
 
     private Vector2 findTile(int x, int y) {
         final int tileSize = 600/8;
-        x = getRange(x, 0, 600-64);
-        y = getRange(y, 0, 600-64);
+        x = MyMath.getRange(x, 0, 600-64);
+        y = MyMath.getRange(y, 0, 600-64);
         if (x <= 600) {
             x = (x/tileSize);
             y = 7 - (y/tileSize);
@@ -101,23 +101,15 @@ public class MyInputProcessor implements InputProcessor {
     }
 
     private Piece findUnit(Vector2 pos) {
-        for (Piece piece : getBoardInstance().getAllPieces()) {
+        for (Piece piece : board.getAllPieces()) {
             if (piece.position.equals(pos)) {
                 piece.dragged = true;
-                System.out.println("unit found!\n");
+                if (!piece.movableTiles.isEmpty()) {
+                    System.out.println("this unit can move forward" + '\n');
+                }
                 return piece;
             }
         }
         return null;
-    }
-
-    private int getRange(int input, int min, int max) {
-        if (input < min) {
-            return min;
-        }
-        if (input > max) {
-            return max;
-        }
-        return input;
     }
 }
