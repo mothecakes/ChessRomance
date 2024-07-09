@@ -4,15 +4,17 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 
 public class Board {
-    private Piece[][] tiles;
     private final int width = 8;
     private final int height = 8;
-    private Texture boardTexture;
     private Piece[] whitePieces = null;
     private Piece[] blackPieces = null;
     private Piece[] allPieces = null;
+    private Piece[] deadPieces;
+
+    private Piece.Side turn = Piece.Side.WHITE;
 
     private static Board boardInstance = null;
+
 
     public static Board getBoardInstance() {
         if (boardInstance == null) {
@@ -42,7 +44,7 @@ public class Board {
 
 
     private Board() {
-        tiles = new Piece[width][height];
+        deadPieces = new Piece[32];
     }
 
     private void generateBlack() {
@@ -91,6 +93,19 @@ public class Board {
         }
 
     }
+
+    // turn manager logic
+
+    public void setTurn() {
+        if (turn == Piece.Side.WHITE) turn = Piece.Side.BLACK;
+        else if (turn == Piece.Side.BLACK) turn = Piece.Side.WHITE;
+    }
+
+    public Piece.Side getTurn() {
+        return turn;
+    }
+
+
 
 
 

@@ -83,7 +83,7 @@ public class Render {
         final int tileOffset = tileSize/2;
         for (Piece piece : pieces) {
             //batch.draw()
-            if (piece.dragged) {
+            if (piece.dragged && piece.alive) {
                 if (piece.side == Piece.Side.WHITE)
                     batch.draw(pawn, mousePosition.x - tileOffset, mousePosition.y - tileOffset, tileSize, tileSize,
                             0, 0, 64, 64, false, false);
@@ -91,7 +91,7 @@ public class Render {
                     batch.draw(pawn, mousePosition.x - tileOffset, mousePosition.y- tileOffset, tileSize, tileSize,
                             64, 0,  64, 64, false, false);
             }
-            else {
+            else if (piece.alive){
                 if (piece.side == Piece.Side.WHITE)
                     batch.draw(pawn, tileSize * piece.position.x, tileSize * piece.position.y, tileSize, tileSize,
                             0, 0,  64, 64, false, false);

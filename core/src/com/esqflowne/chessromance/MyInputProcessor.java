@@ -35,7 +35,11 @@ public class MyInputProcessor implements InputProcessor {
             return false;
         }
         if (unit != null) {
-            unit.dragged = true;
+            if (unit.side == board.getTurn()) {
+                System.out.println("unit side" + unit.side);
+                System.out.println("turn side" + board.getTurn());
+                unit.dragged = true;
+            }
         }
         render.setMousePosition(i, i1);
 
@@ -49,9 +53,12 @@ public class MyInputProcessor implements InputProcessor {
         // if drag flag on, and new tile,
         for (Piece piece : board.getAllPieces()) {
             if (piece.dragged) {
-                piece.move(findTile(x, y));
-                render.resetMousePosition();
-                piece.dragged = false;
+                Vector2 target = findTile(x,y);
+                if (!target.equals(piece.position)) {
+                    piece.move(target);
+                    render.resetMousePosition();
+                    piece.dragged = false;
+                }
             }
         }
         // // convert mouse position to board position
@@ -103,7 +110,6 @@ public class MyInputProcessor implements InputProcessor {
     private Piece findUnit(Vector2 pos) {
         for (Piece piece : board.getAllPieces()) {
             if (piece.position.equals(pos)) {
-                piece.dragged = true;
                 if (!piece.movableTiles.isEmpty()) {
                     System.out.println("this unit can move forward" + '\n');
                 }

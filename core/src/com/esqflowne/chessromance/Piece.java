@@ -9,12 +9,12 @@ abstract class Piece {
     public Unit unit;
     public Vector2 position;
     public Side side;
-    public boolean alive;
+    public boolean alive = true;
     public boolean dragged;
     public ArrayList<Vector2> movableTiles;
     public ArrayList<Vector2> takeableTiles;
 
-    private static Board board = null;
+    public static Board board = null;
 
     enum Side {
         BLACK,
@@ -43,7 +43,7 @@ abstract class Piece {
 
     public abstract void move(Vector2 target);
 
-    // responsible for detecting movable and takable tiles
+    // responsible for detecting movable and takeable tiles
     public abstract void detectTile();
 
     public abstract void detectMoveable();
@@ -58,6 +58,15 @@ abstract class Piece {
 
     public void die() {
         alive = false;
+        position = new Vector2(-1,-1);
+    }
+
+    public void take(Vector2 target) {
+        for(Piece piece : board.getAllPieces()) {
+            if (piece.position.equals(target)) {
+                piece.die();
+            }
+        }
     }
 
 }
