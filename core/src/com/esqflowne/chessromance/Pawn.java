@@ -13,14 +13,12 @@ public class Pawn extends Piece {
     public void move(Vector2 target) {
         detectTile();
         if (movableTiles.contains(target)) {
-            System.out.println("Going from " + position + " to " + target);
             position = target;
 
             board.setTurn();
         }
         if (takeableTiles.contains(target)) {
             take(target);
-            System.out.println("Going from " + position + " to " + target);
             position = target;
 
             board.setTurn();

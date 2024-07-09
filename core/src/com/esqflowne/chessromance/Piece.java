@@ -59,6 +59,7 @@ abstract class Piece {
     public void die() {
         alive = false;
         position = new Vector2(-1,-1);
+
     }
 
     public void take(Vector2 target) {

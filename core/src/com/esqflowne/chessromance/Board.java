@@ -3,13 +3,15 @@ package com.esqflowne.chessromance;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 
+import java.util.ArrayList;
+
 public class Board {
     private final int width = 8;
     private final int height = 8;
     private Piece[] whitePieces = null;
     private Piece[] blackPieces = null;
     private Piece[] allPieces = null;
-    private Piece[] deadPieces;
+    private ArrayList<Piece> deadPieces;
 
     private Piece.Side turn = Piece.Side.WHITE;
 
@@ -44,7 +46,7 @@ public class Board {
 
 
     private Board() {
-        deadPieces = new Piece[32];
+        deadPieces = new ArrayList<Piece>();
     }
 
     private void generateBlack() {
@@ -105,7 +107,14 @@ public class Board {
         return turn;
     }
 
-
+    public void addDeadPiece(Piece piece) {
+        for (Piece dead: allPieces) {
+            if (piece == dead) {
+                deadPieces.add(piece);
+                dead = null;
+            }
+        }
+    }
 
 
 
