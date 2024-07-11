@@ -60,11 +60,13 @@ public class Board {
             final int offsetX = 0;
 
             int count = 0;
-            for (int j = 0; j < 2; j++) {
-                for(int i = 0; i < width; i++)  {
-                    blackPieces[count] = new Pawn(new Vector2(offsetX + i,offsetY + j), Piece.Side.BLACK);
-                    count++;
-                }
+            for(int i = 0; i < width; i++)  {
+                blackPieces[count] = new Pawn(new Vector2(offsetX + i,6), Piece.Side.BLACK);
+                count++;
+            }
+            for(int i = 0; i < width; i++)  {
+                blackPieces[count] = new Bishop(new Vector2(offsetX + i,7), Piece.Side.BLACK);
+                count++;
             }
             for (Piece piece: blackPieces) {
                 System.out.println("Black pawn created (" + piece.position.x + ", " + piece.position.y +
@@ -83,12 +85,15 @@ public class Board {
         final int offsetX = 0;
 
         int count = 0;
-        for (int j = 0; j < 2; j++) {
-            for(int i = 0; i < width; i++)  {
-                whitePieces[count] = new Pawn(new Vector2(offsetX + i,offsetY + j), Piece.Side.WHITE);
-                count++;
-            }
+        for(int i = 0; i < width; i++)  {
+            whitePieces[count] = new Pawn(new Vector2(offsetX + i,1), Piece.Side.WHITE);
+            count++;
         }
+        for(int i = 0; i < width; i++)  {
+            whitePieces[count] = new Bishop(new Vector2(offsetX + i,0), Piece.Side.WHITE);
+            count++;
+        }
+
         for (Piece piece: whitePieces) {
             System.out.println("White pawn created (" + piece.position.x + ", " + piece.position.y +
                     ")" + '\n');

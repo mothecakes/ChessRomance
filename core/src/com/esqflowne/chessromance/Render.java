@@ -84,22 +84,46 @@ public class Render {
         for (Piece piece : pieces) {
             //batch.draw()
             if (piece.dragged && piece.alive) {
-                if (piece.side == Piece.Side.WHITE)
-                    batch.draw(pawn, mousePosition.x - tileOffset, mousePosition.y - tileOffset, tileSize, tileSize,
-                            0, 0, 64, 64, false, false);
-                else
-                    batch.draw(pawn, mousePosition.x - tileOffset, mousePosition.y- tileOffset, tileSize, tileSize,
-                            64, 0,  64, 64, false, false);
+                if (piece.side == Piece.Side.WHITE) {
+                    if (piece.unit == Piece.Unit.PAWN)
+                        batch.draw(pawn, mousePosition.x - tileOffset, mousePosition.y - tileOffset, tileSize, tileSize,
+                                0, 0, 64, 64, false, false);
+
+                    if (piece.unit == Piece.Unit.BISHOP)
+                        batch.draw(pawn, mousePosition.x - tileOffset, mousePosition.y - tileOffset, tileSize, tileSize,
+                                128, 0, 64, 64, false, false);
+                }
+                if (piece.side == Piece.Side.BLACK) {
+                    if (piece.unit == Piece.Unit.PAWN)
+                        batch.draw(pawn, mousePosition.x - tileOffset, mousePosition.y - tileOffset, tileSize, tileSize,
+                                64, 0, 64, 64, false, false);
+
+                    if (piece.unit == Piece.Unit.BISHOP)
+                        batch.draw(pawn, mousePosition.x - tileOffset, mousePosition.y - tileOffset, tileSize, tileSize,
+                                192, 0, 64, 64, false, false);
+
+                }
             }
             else if (piece.alive){
-                if (piece.side == Piece.Side.WHITE)
-                    batch.draw(pawn, tileSize * piece.position.x, tileSize * piece.position.y, tileSize, tileSize,
-                            0, 0,  64, 64, false, false);
-                else {
-                    batch.draw(pawn, tileSize * piece.position.x, tileSize * piece.position.y, tileSize, tileSize,
-                            64, 0,  64, 64, false, false);
-                }
+                if (piece.side == Piece.Side.WHITE) {
+                    if (piece.unit == Piece.Unit.PAWN)
+                        batch.draw(pawn, tileSize * piece.position.x, tileSize * piece.position.y, tileSize, tileSize,
+                                0, 0, 64, 64, false, false);
 
+                    if (piece.unit == Piece.Unit.BISHOP)
+                        batch.draw(pawn, tileSize * piece.position.x, tileSize * piece.position.y, tileSize, tileSize,
+                                128, 0, 64, 64, false, false);
+                }
+                if (piece.side == Piece.Side.BLACK) {
+                    if (piece.unit == Piece.Unit.PAWN)
+                        batch.draw(pawn, tileSize * piece.position.x, tileSize * piece.position.y, tileSize, tileSize,
+                                64, 0, 64, 64, false, false);
+
+                    if (piece.unit == Piece.Unit.BISHOP)
+                        batch.draw(pawn, tileSize * piece.position.x, tileSize * piece.position.y, tileSize, tileSize,
+                                192, 0, 64, 64, false, false);
+
+                }
             }
         }
     }
