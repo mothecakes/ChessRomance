@@ -56,18 +56,29 @@ public class Board {
         {
             blackPieces = new Piece[16];
 
-            final int offsetY = 6;
+            final int offsetY = 7;
             final int offsetX = 0;
-
             int count = 0;
             for(int i = 0; i < width; i++)  {
                 blackPieces[count] = new Pawn(new Vector2(offsetX + i,6), Piece.Side.BLACK);
                 count++;
             }
-            for(int i = 0; i < width; i++)  {
-                blackPieces[count] = new Bishop(new Vector2(offsetX + i,7), Piece.Side.BLACK);
-                count++;
-            }
+            blackPieces[count] = new Rook(new Vector2(0,offsetY ), Piece.Side.BLACK);
+            count++;
+            blackPieces[count] = new Knight(new Vector2(1,offsetY), Piece.Side.BLACK);
+            count++;
+            blackPieces[count] = new Bishop(new Vector2(2,offsetY),Piece.Side.BLACK);
+            count++;
+            blackPieces[count] = new King(new Vector2(3,offsetY),Piece.Side.BLACK);
+            count++;
+            blackPieces[count] = new Queen(new Vector2(4,offsetY),Piece.Side.BLACK);
+            count++;
+            blackPieces[count] = new Bishop(new Vector2(5,offsetY),Piece.Side.BLACK);
+            count++;
+            blackPieces[count] = new Knight(new Vector2(6,offsetY),Piece.Side.BLACK);
+            count++;
+            blackPieces[count] = new Rook(new Vector2(7,offsetY),Piece.Side.BLACK);
+            count++;
             for (Piece piece: blackPieces) {
                 System.out.println("Black pawn created (" + piece.position.x + ", " + piece.position.y +
                         ")" + '\n');
@@ -89,10 +100,22 @@ public class Board {
             whitePieces[count] = new Pawn(new Vector2(offsetX + i,1), Piece.Side.WHITE);
             count++;
         }
-        for(int i = 0; i < width; i++)  {
-            whitePieces[count] = new Bishop(new Vector2(offsetX + i,0), Piece.Side.WHITE);
-            count++;
-        }
+        whitePieces[count] = new Rook(new Vector2(0,0), Piece.Side.WHITE);
+        count++;
+        whitePieces[count] = new Knight(new Vector2(1,0), Piece.Side.WHITE);
+        count++;
+        whitePieces[count] = new Bishop(new Vector2(2,0),Piece.Side.WHITE);
+        count++;
+        whitePieces[count] = new Queen(new Vector2(3,0),Piece.Side.WHITE);
+        count++;
+        whitePieces[count] = new King(new Vector2(4,0),Piece.Side.WHITE);
+        count++;
+        whitePieces[count] = new Bishop(new Vector2(5,0),Piece.Side.WHITE);
+        count++;
+        whitePieces[count] = new Knight(new Vector2(6,0),Piece.Side.WHITE);
+        count++;
+        whitePieces[count] = new Rook(new Vector2(7,0),Piece.Side.WHITE);
+        count++;
 
         for (Piece piece: whitePieces) {
             System.out.println("White pawn created (" + piece.position.x + ", " + piece.position.y +

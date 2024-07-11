@@ -92,6 +92,20 @@ public class Render {
                     if (piece.unit == Piece.Unit.BISHOP)
                         batch.draw(pawn, mousePosition.x - tileOffset, mousePosition.y - tileOffset, tileSize, tileSize,
                                 128, 0, 64, 64, false, false);
+                    if (piece.unit == Piece.Unit.ROOK)
+                        batch.draw(pawn, mousePosition.x - tileOffset, mousePosition.y - tileOffset, tileSize, tileSize,
+                                0, 64, 64, 64, false, false);
+
+                    if (piece.unit == Piece.Unit.KNIGHT)
+                        batch.draw(pawn, mousePosition.x - tileOffset, mousePosition.y - tileOffset, tileSize, tileSize,
+                                128, 64, 64, 64, false, false);
+                    if (piece.unit == Piece.Unit.QUEEN)
+                        batch.draw(pawn, mousePosition.x - tileOffset, mousePosition.y - tileOffset, tileSize, tileSize,
+                                0, 128, 64, 64, false, false);
+
+                    if (piece.unit == Piece.Unit.KING)
+                        batch.draw(pawn, mousePosition.x - tileOffset, mousePosition.y - tileOffset, tileSize, tileSize,
+                                128, 128, 64, 64, false, false);
                 }
                 if (piece.side == Piece.Side.BLACK) {
                     if (piece.unit == Piece.Unit.PAWN)
@@ -101,6 +115,20 @@ public class Render {
                     if (piece.unit == Piece.Unit.BISHOP)
                         batch.draw(pawn, mousePosition.x - tileOffset, mousePosition.y - tileOffset, tileSize, tileSize,
                                 192, 0, 64, 64, false, false);
+                    if (piece.unit == Piece.Unit.ROOK)
+                        batch.draw(pawn, mousePosition.x - tileOffset, mousePosition.y - tileOffset, tileSize, tileSize,
+                                64, 64, 64, 64, false, false);
+
+                    if (piece.unit == Piece.Unit.KNIGHT)
+                        batch.draw(pawn, mousePosition.x - tileOffset, mousePosition.y - tileOffset, tileSize, tileSize,
+                                192, 64, 64, 64, false, false);
+                    if (piece.unit == Piece.Unit.QUEEN)
+                        batch.draw(pawn, mousePosition.x - tileOffset, mousePosition.y - tileOffset, tileSize, tileSize,
+                                64, 128, 64, 64, false, false);
+
+                    if (piece.unit == Piece.Unit.KING)
+                        batch.draw(pawn, mousePosition.x - tileOffset, mousePosition.y - tileOffset, tileSize, tileSize,
+                                192, 128, 64, 64, false, false);
 
                 }
             }
@@ -113,6 +141,21 @@ public class Render {
                     if (piece.unit == Piece.Unit.BISHOP)
                         batch.draw(pawn, tileSize * piece.position.x, tileSize * piece.position.y, tileSize, tileSize,
                                 128, 0, 64, 64, false, false);
+
+                    if (piece.unit == Piece.Unit.ROOK)
+                        batch.draw(pawn, tileSize * piece.position.x, tileSize * piece.position.y, tileSize, tileSize,
+                                0, 64, 64, 64, false, false);
+
+                    if (piece.unit == Piece.Unit.KNIGHT)
+                        batch.draw(pawn, tileSize * piece.position.x, tileSize * piece.position.y, tileSize, tileSize,
+                                128, 64, 64, 64, false, false);
+                    if (piece.unit == Piece.Unit.QUEEN)
+                        batch.draw(pawn, tileSize * piece.position.x, tileSize * piece.position.y, tileSize, tileSize,
+                                0, 128, 64, 64, false, false);
+
+                    if (piece.unit == Piece.Unit.KING)
+                        batch.draw(pawn, tileSize * piece.position.x, tileSize * piece.position.y, tileSize, tileSize,
+                                128, 128, 64, 64, false, false);
                 }
                 if (piece.side == Piece.Side.BLACK) {
                     if (piece.unit == Piece.Unit.PAWN)
@@ -123,6 +166,20 @@ public class Render {
                         batch.draw(pawn, tileSize * piece.position.x, tileSize * piece.position.y, tileSize, tileSize,
                                 192, 0, 64, 64, false, false);
 
+                    if (piece.unit == Piece.Unit.ROOK)
+                        batch.draw(pawn, tileSize * piece.position.x, tileSize * piece.position.y, tileSize, tileSize,
+                                64, 64, 64, 64, false, false);
+
+                    if (piece.unit == Piece.Unit.KNIGHT)
+                        batch.draw(pawn, tileSize * piece.position.x, tileSize * piece.position.y, tileSize, tileSize,
+                                192, 64, 64, 64, false, false);
+                    if (piece.unit == Piece.Unit.QUEEN)
+                        batch.draw(pawn, tileSize * piece.position.x, tileSize * piece.position.y, tileSize, tileSize,
+                                64, 128, 64, 64, false, false);
+
+                    if (piece.unit == Piece.Unit.KING)
+                        batch.draw(pawn, tileSize * piece.position.x, tileSize * piece.position.y, tileSize, tileSize,
+                                192, 128, 64, 64, false, false);
                 }
             }
         }
